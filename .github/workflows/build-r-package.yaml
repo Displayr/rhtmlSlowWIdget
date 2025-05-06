@@ -1,0 +1,18 @@
+name: Build rhtmlSlowWIdget
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  build:
+    name: Build rhtmlSlowWIdget
+    permissions:
+      checks: write
+      contents: read
+    uses: Displayr/nixr-public/.github/workflows/build-flake-installable.yaml@master
+    with:
+      installable-path: pkgs.x86_64-linux.rPackages.rhtmlSlowWIdget
+      build-args: --override-input rhtmlSlowWIdget .
+      installable-name: rhtmlSlowWIdget
+    secrets: inherit
